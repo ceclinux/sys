@@ -3742,3 +3742,35 @@ const (
 	NLMSGERR_ATTR_OFFS   = 0x2
 	NLMSGERR_ATTR_COOKIE = 0x3
 )
+
+type Mfcctl struct {
+	Origin   [4]byte /* in_addr */
+	Mcastgrp [4]byte /* in_addr */
+	Parent   uint16
+	Ttls     [32]uint8
+	Pkt_cnt  uint32
+	Byte_cnt uint32
+	Wrong_if uint32
+	Expire   int32
+}
+type Vifctl struct {
+	Vifi       uint16
+	Flags      uint8
+	Threshold  uint8
+	Rate_limit uint32
+	Lcl_addr   [4]byte /* in_addr */
+	Rmt_addr   [4]byte /* in_addr */
+}
+type IgmpMsg struct {
+	Unused1 uint32
+	Unused2 uint32
+	Msgtype uint8
+	Mbz     uint8
+	Vif     uint8
+	Vif_hi  uint8
+	Src     [4]byte /* in_addr */
+	Dst     [4]byte /* in_addr */
+}
+
+const SizeofMfcctl = 0x3c
+const SizeofVifctl = 0x10

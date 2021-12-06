@@ -53,6 +53,7 @@ package unix
 #include <sys/user.h>
 #include <sys/utsname.h>
 #include <sys/wait.h>
+#include <linux/mroute.h>
 
 #if defined(__sparc__)
 // On sparc{,64}, the kernel defines struct termios2 itself which clashes with the
@@ -3672,3 +3673,10 @@ const (
 	NLMSGERR_ATTR_OFFS   = C.NLMSGERR_ATTR_OFFS
 	NLMSGERR_ATTR_COOKIE = C.NLMSGERR_ATTR_COOKIE
 )
+
+type Mfcctl C.struct_mfcctl
+type Vifctl C.struct_vifctl
+type IgmpMsg C.struct_igmpmsg
+const SizeofMfcctl=C.sizeof_struct_mfcctl
+const SizeofVifctl=C.sizeof_struct_vifctl
+
